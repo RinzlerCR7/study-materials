@@ -306,6 +306,7 @@ do
     tar cf /archives/${USER}.tar.gz /home/${USER}
 done
 ```
+_Note: `$@` does not contain `$0`, i.e., the script name._
 
 CLI:
 ```command
