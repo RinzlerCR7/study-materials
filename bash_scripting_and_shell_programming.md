@@ -350,3 +350,159 @@ Archiving user: mitch
 passwd: password expiry information changed.
 tar: Removing leading '/' from member names
 ```
+
+# Section 3: Return Codes & Exit Statuses
+
+## 7. Exit Statues & Return Codes
+
+### Exit Status/Return Code
+
+* Every command returns an `exit` status
+* Range from 0 to 255
+* 0 = success
+* Other than 0 = error condition
+* Use for error checking
+* Use `man` or `info` to find meaning of `exit` status
+
+### Checking the Exit Status
+
+* `$?` contains the return code of the previously executed command.
+
+Example 1:
+```bash
+ls /not/here
+echo "$?"
+```
+
+Output:
+```command
+2
+```
+
+Example 2:
+```bash
+HOST="google.com"
+ping -c 1 $HOST                 # "-c 1" means 1 packet.
+
+if [ "$?" -eq "0" ]
+then
+    echo "$HOST reachable."
+else
+    echo "$HOST unreachable."
+fi
+```
+
+Example 2:
+```bash
+HOST="google.com"
+ping -c 1 $HOST
+RETURN_CODE=$?
+
+if [ "$RETURN_CODE" -ne "0" ]
+then
+    echo "$HOST unreachable."
+fi
+```
+
+### && and ||
+
+&& = AND
+```command
+$ mkdir /tmp/bak && cp test.txt /tmp/bak/
+```
+
+|| = OR
+```command
+$ cp test.txt /tmp/bak/ || cp test.txt /tmp
+```
+
+Example 1:
+```bash
+#!/bin/bash
+
+HOST="google.com"
+ping -c 1 $HOST && echo "$HOST reachable."
+```
+
+Example 2:
+```bash
+#!/bin/bash
+
+HOST="google.com"
+ping -c 1 $HOST || echo "$HOST unreachable."
+```
+
+### The semicolon
+
+Separate commands with a semicolon to ensure they all get executed.
+```command
+$ cp test.txt /tmp/bak/ ; cp test.txt /tmp
+```
+
+Same as:
+```command
+$ cp test.txt /tmp/bak/
+$ cp test.txt /tmp
+```
+
+### Exit Command
+
+Explicitly define the return code `exit 0`, `exit 1`, `exit 2`, `exit 255`, etc..
+
+_Note: The default value is that of the last command executed._
+
+Example 1:
+```bash
+#!/bin/bash
+
+HOST="google.com"
+ping -c 1 $HOST
+
+if [ "$?" -ne "0" ]
+then
+    echo "$HOST unreachable."
+    exit 1
+fi
+exit 0
+```
+
+Example 2:
+```console
+$ ping -c 1 google.com
+...
+$ echo $?
+0
+$ ping -c 1 -w 1 amazon.com
+...
+$ echo $?
+1
+$ ping -c 1 amazon.com.blah
+...
+$ echo $?
+2
+```
+
+Check `error` codes:
+```console
+$ man ping      # Open ping documentation.
+...
+$ /code         # Searches for "code" in the documentation.
+...
+$ q             # Quit the documentation.
+```
+
+Example 3:
+```console
+$ mkdir /tmp/jason/bak && cp -v /etc/hosts /tmp/jason/bak
+...
+$ echo $?
+1
+$ mkdir -p /tmp/jason/bak && cp -v /etc/hosts /tmp/jason/bak    # Creates parent directory as well.
+...
+$ cp -v /etc/hosts /tmp/bak/ || cp -v /etc/hosts /tmp/
+...
+$ cp -v /etc/hosts /tmp/ || cp -v /etc/hosts /tmp/bak/
+...
+$ ls /etc/hosts ; hostname ; uptime
+...
+```
