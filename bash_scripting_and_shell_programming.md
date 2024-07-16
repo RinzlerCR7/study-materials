@@ -351,20 +351,20 @@ passwd: password expiry information changed.
 tar: Removing leading '/' from member names
 ```
 
-# Section 3: Return Codes & Exit Statuses
+# Section 3: Return Codes & `exit` Statuses
 
-## 7. Exit Statues & Return Codes
+## 7. `exit` Statues & Return Codes
 
-### Exit Status/Return Code
+### `exit` Status/Return Code
 
 * Every command returns an `exit` status
-* Range from 0 to 255
-* 0 = success
-* Other than 0 = error condition
+* Range from `0` to `255`
+* `0` = success
+* Other than `0` = error condition
 * Use for error checking
 * Use `man` or `info` to find meaning of `exit` status
 
-### Checking the Exit Status
+### Checking the `exit` Status
 
 * `$?` contains the return code of the previously executed command.
 
@@ -404,14 +404,14 @@ then
 fi
 ```
 
-### && and ||
+### `&&` and `||`
 
-&& = AND
+`&&` = AND
 ```command
 $ mkdir /tmp/bak && cp test.txt /tmp/bak/
 ```
 
-|| = OR
+`||` = OR
 ```command
 $ cp test.txt /tmp/bak/ || cp test.txt /tmp
 ```
@@ -432,9 +432,9 @@ HOST="google.com"
 ping -c 1 $HOST || echo "$HOST unreachable."
 ```
 
-### The semicolon
+### The `;` (semicolon)
 
-Separate commands with a semicolon to ensure they all get executed.
+Separate commands with a `;` (semicolon) to ensure they all get executed.
 ```command
 $ cp test.txt /tmp/bak/ ; cp test.txt /tmp
 ```
@@ -445,7 +445,7 @@ $ cp test.txt /tmp/bak/
 $ cp test.txt /tmp
 ```
 
-### Exit Command
+### `exit` Command
 
 Explicitly define the return code `exit 0`, `exit 1`, `exit 2`, `exit 255`, etc..
 
@@ -505,4 +505,188 @@ $ cp -v /etc/hosts /tmp/ || cp -v /etc/hosts /tmp/bak/
 ...
 $ ls /etc/hosts ; hostname ; uptime
 ...
+```
+
+# Section 4: Shell Functions
+
+## 10. Functions, Part I
+
+### `function`
+
+* Must be defined before use.
+* Has parameter support.
+
+Syntax:
+```bash
+function function-name() {
+    # Code goes here.
+}
+
+function-name() {
+    # Code goes here.
+}
+```
+
+Example 1:
+```bash
+#!/bin/bash
+function hello() {
+    echo "Hello!"
+}
+hello
+```
+
+Example 2:
+```bash
+#!/bin/bash
+
+function hello() {
+    echo "Hello!"
+    now
+}
+
+function now() {
+    echo "It's $(date +%r)"
+}
+
+hello
+```
+
+### Positional Parameters
+
+* Functions can accept parameters.
+* The first parameter is stored in `$1`.
+* The second parameter is stored in `$2`, etc.
+* `$@` contains all of the parameters.
+* Just like shell scripts.
+    * `$0` = the script itself, not function name.
+
+Example 1:
+```bash
+#!/bin/bash
+
+function hello() {
+    echo "Hello $1"
+}
+
+hello Jason
+```
+
+Output:
+```console
+Hello Jason
+```
+
+Example 2:
+```bash
+#!/bin/bash
+
+function hello() {
+    for NAME is $@
+    do
+        echo "Hello $NAME"
+    done
+}
+
+hello Jason Dan Ryan
+```
+
+Output:
+```console
+Hello Jason
+Hello Dan
+Hello Ryan
+```
+
+### Variable Scope
+
+* By default, variables are global.
+
+If a global variable is inside a `function`, it does not get defined until the `function` is invoked once.
+```bash
+#!/bin/bash
+
+my_function() {
+    GLOBAL_VAR=1
+}
+
+# GLOBAL_VAR not available yet.
+echo $GLOBAL_VAR
+
+my_function
+
+# GLOBAL_VAR is NOW available.
+echo $GLOBAL_VAR
+```
+
+### Local Variables
+
+* Can only be accessed within the function.
+* Create using the `local` keyword.
+    * `local LOCAL_VAR=1`
+* Only functions can have local variables.
+
+## 11. Functions, Part II
+
+### `exit` status (`return` codes)
+
+* Functions have an `exit` status.
+* Explicitly
+    * `return` <RETURN_CODE>
+* Implicity
+    * The `exit` status of the last command executed in the function.
+* Valid `exit` codes range from `0` to `255`.
+* `0` = success
+* `$?` = the `exit` status
+
+```bash
+my_function
+echo $?
+```
+
+```bash
+function backup_file() {
+    if [ -f $1 ]
+    then
+        BACK="/tmp/$(basename ${1}).$(date +%F).$$"
+        echo "Backing up $1 to ${BACK}"
+        cp $1 $BACK
+    fi
+}
+
+backup_file /etc/hosts
+
+if [ $? -eq 0 ]
+then
+    echo "Backup succeeded!"
+fi
+```
+
+```bash
+function backup_file() {
+    if [ -f $1 ]
+    then
+        local BACK="/tmp/$(basename ${1}).$(date +%F).$$"
+        echo "Backing up $1 to ${BACK}"
+        # The exit status of the function will be
+        # the exit status of the cp command.
+        cp $1 $BACK
+    else
+        # The file does not exist.
+        return 1
+    fi
+}
+
+backup_file /etc/hosts
+
+# Make a decision based on the exit status.
+if [ $? -eq 0 ]
+then
+    echo "Backup succeeded!"
+else
+    echo "Backup failed!"
+    # About the script & return a non-zero
+    # exit status.
+    exit 1
+fi
 ```
