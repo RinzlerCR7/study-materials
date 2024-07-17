@@ -690,3 +690,16 @@ else
     exit 1
 fi
 ```
+
+# Section 5: Shell Script Order & Checklist
+
+### Shell Script Order & Checklist
+
+* Shebang
+* Comments / file header
+* Global variables
+* Functions
+    * Use local variables
+* Main script contents
+* Exit with an `exit` status
+    * `exit` <STATUS> at various exit points.
