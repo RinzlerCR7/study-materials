@@ -136,7 +136,7 @@ Syntax:
 Syntax:
 
 ```bash
-if [ condition-is-true]
+if [ condition-is-true ]
 then
     command 1
 elif [ condition-is-true ]
