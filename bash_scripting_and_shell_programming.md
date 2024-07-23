@@ -136,10 +136,10 @@ Syntax:
 Syntax:
 
 ```bash
-if [ condition-is-true ]
+if [ condition-is-true]
 then
     command 1
-elif [ condition-is-true ]
+elif [ condition-is-true ] && [ condition-is-true ]
 then
     command 2
 else
