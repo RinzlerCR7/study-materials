@@ -42,3 +42,17 @@ SELECT company, SUM(sales)
     ORDER BY SUM(sales)
     LIMIT 5;
 ```
+
+## 32. HAVING
+* We cannot use use `WHERE` to filter based off of aggregate results, because those happen after a `WHERE` is executed.
+* `HAVING` allows us to use the aggregate result as a filter along with a `GROUP BY`.
+
+Snytax:
+```sql
+-- Example 6:
+SELECT company, SUM(sales)
+    FROM finance_table
+    WHERE company != 'Google'
+    GROUP BY company
+    HAVING SUM(sales) > 1000;
+```
