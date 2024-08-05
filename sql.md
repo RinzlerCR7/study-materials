@@ -56,3 +56,21 @@ SELECT company, SUM(sales)
     GROUP BY company
     HAVING SUM(sales) > 1000;
 ```
+
+## 39. AS Statement
+* The `AS` operator gets executed at the very end of a query, meaning that we can not use the alias inside a `WHERE` operator.
+
+```sql
+-- Example 7:
+SELECT customer_id, amount AS new_name
+    FROM payment
+    WHERE new_name > 2;
+
+-- Example 8:
+SELECT customer_id, SUM(amount) AS total_spent
+    FROM payment
+    GROUP BY customer_id
+    HAVING SUM(amount) > 100
+```
+
+## 40. Inner Joins
