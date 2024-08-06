@@ -104,7 +104,7 @@ SELECT *
     ON tableA.col_match = tableB.col_match
 ```
 
-Full Outer Join with `WHERE`
+`FULL OUTER JOIN` with `WHERE`
 * Symmetric
 
 Syntax:
