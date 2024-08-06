@@ -139,3 +139,15 @@ SELECT *
     ON tableA.col_match = tableB.col_match
     WHERE tableB.id IS NULL;
 ```
+
+## 43. UNION
+* The `UNION` operator is used to combine the result-set of 2 or more `SELECT` statements.
+* It directly concatenate 2 results together.
+
+Syntax:
+```sql
+-- Example 15:
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+```
