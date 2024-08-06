@@ -60,6 +60,7 @@ SELECT company, SUM(sales)
 ## 39. AS Statement
 * The `AS` operator gets executed at the very end of a query, meaning that we can not use the alias inside a `WHERE` operator.
 
+Snytax:
 ```sql
 -- Example 7:
 SELECT customer_id, amount AS new_name
@@ -74,3 +75,67 @@ SELECT customer_id, SUM(amount) AS total_spent
 ```
 
 ## 40. Inner Joins
+* If you see just `JOIN` without the `INNER`, PostgreSQL will treat it as an `INNER JOIN`.
+
+Syntax:
+```sql
+-- Example 9:
+SELECT payment_id, payment.customer_id, first_name
+	FROM payment
+	INNER JOIN customer
+	ON payment.customer_id = customer.customer_id;
+
+-- Example 10:
+SELECT reg_id, Logins.name, log_id
+    FROM Registrations
+    INNER JOIN Logins
+    ON Registrations.name = Logins.name
+```
+
+## 41. Full Outer Joins
+* Symmetric
+
+Syntax:
+```sql
+-- Example 11:
+SELECT *
+    FROM tableA
+    FULL OUTER JOIN tableB
+    ON tableA.col_match = tableB.col_match
+```
+
+Full Outer Join with `WHERE`
+* Symmetric
+
+Syntax:
+```sql
+-- Example 12:
+SELECT *
+    FROM tableA
+    FULL OUTER JOIN tableB
+    ON tableA.col_match = tableB.col_match
+    WHERE tableA.id IS NULL OR tableB.id IS NULL    
+```
+
+## 42. Left Outer Joins
+
+Syntax:
+```sql
+-- Example 13:
+SELECT *
+    FROM tableA
+    LEFT OUTER JOIN tableB
+    ON tableA.col_match = tableB.col_match
+```
+
+`LEFT OUTER JOIN` with `WHERE`
+
+Syntax:
+```sql
+-- Example 14:
+SELECT *
+    FROM tableA
+    LEFT OUTER JOIN tableB
+    ON tableA.col_match = tableB.col_match
+    WHERE tableB.id IS NULL;
+```
