@@ -89,7 +89,16 @@ SELECT payment_id, payment.customer_id, first_name
 SELECT reg_id, Logins.name, log_id
     FROM Registrations
     INNER JOIN Logins
-    ON Registrations.name = Logins.name
+    ON Registrations.name = Logins.name;
+
+-- Example 11:
+SELECT title, first_name, last_name
+	FROM film
+	INNER JOIN film_actor
+	ON film.film_id = film_actor.film_id
+	INNER JOIN actor
+	ON film_actor.actor_id = actor.actor_id
+	WHERE first_name = 'Nick' AND last_name = 'Wahlberg';
 ```
 
 ## 41. Full Outer Joins
