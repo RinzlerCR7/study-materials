@@ -160,3 +160,33 @@ SELECT column_name(s) FROM table1
 UNION
 SELECT column_name(s) FROM table2;
 ```
+
+## 53. SubQuery
+* Don't put semicolon (;) at the end of a subquery.
+
+Syntax:
+```sql
+-- Example 16:
+SELECT student, grade
+    FROM test_scores
+    WHERE grade > (SELECT AVG(grade)
+        FROM test_scores);
+
+-- Example 17:
+SELECT first_name, last_name
+	FROM customer AS c
+	WHERE EXISTS (SELECT *
+		FROM payment as p
+		WHERE c.customer_id = p.customer_id);
+
+-- Example 18:
+SELECT film_id, title
+	FROM film
+	WHERE film_id
+	IN (SELECT i.film_id
+		FROM rental as r
+		INNER JOIN inventory as i
+		ON i.inventory_id = r.inventory_id
+		WHERE return_date BETWEEN '2005-05-29' AND '2005-05-30')
+	ORDER BY film_id;
+```
