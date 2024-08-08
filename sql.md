@@ -190,3 +190,14 @@ SELECT film_id, title
 		WHERE return_date BETWEEN '2005-05-29' AND '2005-05-30')
 	ORDER BY film_id;
 ```
+
+## 54. Self-Join
+
+Syntax:
+```sql
+-- Example 19:
+SELECT emp.name, rpt.name
+    FROM employees AS emp
+    JOIN employees AS rpt
+    ON emp.emp_id = rpt.report_id;
+```
