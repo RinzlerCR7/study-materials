@@ -25,9 +25,9 @@ SELECT ROUND(AVG(replacement_cost), 3)
 Syntax:
 ```sql
 -- Example 3:
-SELECT category_col, AGG(data_col)
+SELECT category_col1, category_col2, AGG(data_col)
     FROM table
-    GROUP BY category_col;
+    GROUP BY category_col1, category_col2;
 
 -- Example 4:
 SELECT category_col, AGG(data_col)
