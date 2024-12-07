@@ -1,4 +1,4 @@
-Episode 4 is kinda misleading:
+`Episode 4` is kinda misleading:
 
 * I don't agree with the messaging of this episode. He's basically saying economy is more important than the well-being of the country itself. Economy doing good doesn't naturally mean that the country is doing good too. Best example would be India right now.<sup>[[1]](https://timesofindia.indiatimes.com/business/india-business/why-you-are-not-investing-finance-minister-to-industry/articleshow/94187630.cms)</sup>\
 \
@@ -6,7 +6,7 @@ This kind of belief stems from an inherent Eliteism that is seen quite often in 
 
 * He didn't mentioned that the coup in Chile was orchestrated & funded by the CIA. Salvador Allende was in power for less than 3 yrs, it took Chile ~30 yrs to recover after Pinnoche took over; if we would've given time to Allende, maybe he would've fixed the economy sooner. I'm just saying that the comparison is not fair here & has a very strong American bias.<sup>[[3]](https://www.youtube.com/watch?v=c3rp7Hs1Sjo)</sup>
 
-* **The American Bias:** The coup happened in 1973, during that time USA was going through a phase known as *the Red Scare* (aka McCarthyism).<sup>[[4]](https://www.youtube.com/watch?v=N35IugBYH04)</sup> US government was very brutal during this time & went after anyone even suspected of having left of center views.\
+* **The American Bias:** The coup happened in 1973, it was close to *the Cold War* & USA had gone through a phase known as *the Red Scare* (aka McCarthyism).<sup>[[4]](https://www.youtube.com/watch?v=N35IugBYH04)</sup> US government was very brutal during this time & went after anyone even suspected of having left of center views. They never recovered from it, even now amongst the 2 major parties in USA, one is a right-wing party (Democrats) & the other is a far-right party (Republicans).\
 \
 Chile is a success story for USA as they succedded in toppling the Chilean government, they failed to do so in Cuba & Vietnam.\
 \
