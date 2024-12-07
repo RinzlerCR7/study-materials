@@ -1,4 +1,4 @@
-`Episode 4` is kinda misleading:
+**Episode 4** is kinda misleading:
 
 * I don't agree with the messaging of this episode. He's basically saying economy is more important than the well-being of the country itself. Economy doing good doesn't naturally mean that the country is doing good too. Best example would be India right now.<sup>[[1]](https://timesofindia.indiatimes.com/business/india-business/why-you-are-not-investing-finance-minister-to-industry/articleshow/94187630.cms)</sup>\
 \
