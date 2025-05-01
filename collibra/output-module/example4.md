@@ -42,6 +42,7 @@ Note: Even though "RelationType" field is incorrect in the below query, API call
 
 ## Output
 
+```json
 {
     "view": {
         "Asset0": [
@@ -98,3 +99,4 @@ Note: Even though "RelationType" field is incorrect in the below query, API call
         ]
     }
 }
+```
