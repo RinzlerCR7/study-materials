@@ -13,7 +13,7 @@ Note: Even though "RelationType" field is incorrect in the below query, API call
 
 ## Query
 
-```graphql
+```json
 {
     "ViewConfig": {
 		"displayLength": "5",
