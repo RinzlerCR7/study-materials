@@ -1,0 +1,27 @@
+# Query 1
+
+    query = f'''
+    query {{
+        assets(
+            limit: {limit}
+            where: {{
+                type: {{ parent: {{ publicId: {{ eq: "DataElement" }}}}}}
+                incomingRelations: {{
+                    any: {{
+                        createdOn: {{ gte: "{startDate}" }}
+                        type: {{ publicId: {{ eq: "BusinessAssetRepresentsDataAsset" }}}}
+                    }}
+                }}
+            }}
+        ) {{
+            id
+            fullName
+            incomingRelations {{
+                id
+                type {{
+                    publicId
+                }}
+            }}
+        }}
+    }}
+    '''
