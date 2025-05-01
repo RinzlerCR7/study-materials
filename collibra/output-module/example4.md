@@ -13,6 +13,7 @@ Note: Even though "RelationType" field is incorrect in the below query, API call
 
 ## Query
 
+```graphql
 {
     "ViewConfig": {
 		"displayLength": "5",
@@ -37,6 +38,7 @@ Note: Even though "RelationType" field is incorrect in the below query, API call
         }
     }
 }
+```
 
 ## Output
 
