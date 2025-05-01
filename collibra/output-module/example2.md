@@ -11,6 +11,7 @@ Note: A lot of the stuff is hardcoded below, so it might not work in future or w
 
 ## Query
 
+```json
 {
     "ViewConfig": {
 		"displayLength": "5",
@@ -39,9 +40,11 @@ Note: A lot of the stuff is hardcoded below, so it might not work in future or w
         }
     }
 }
+```
 
 ## Output
 
+```json
 {
     "view": {
         "Asset0": [{
@@ -83,3 +86,4 @@ Note: A lot of the stuff is hardcoded below, so it might not work in future or w
         ]
     }
 }
+```
